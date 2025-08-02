@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
-const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "/api/",
-  withCredentials: true,
+const apiClient = axios.create({
+  baseURL: 'http://localhost:8000', // Your Django backend URL
+  withCredentials: true, // This is crucial for sending cookies
 });
 
-export default api;
+export default apiClient;

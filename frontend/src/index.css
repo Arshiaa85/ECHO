@@ -27,6 +27,20 @@
 }
 
 @layer components {
+  .nav-link {
+    @apply relative text-neutral py-2;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-full h-0.5 bg-accent scale-x-0 transition-transform duration-300 ease-in-out;
+    transform-origin: bottom right;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply scale-x-100;
+    transform-origin: bottom left;
+  }
   .btn {
     @apply px-4 py-2 rounded-md font-bold text-white bg-accent transition-colors duration-300;
   }
@@ -58,5 +72,63 @@
     animation: 
       typing 3.5s steps(40, end),
       blink-caret .75s step-end infinite;
+  }
+
+  .slide-in-right {
+    animation: slideInRight 0.3s ease-in-out both;
+  }
+
+  .slide-out-right {
+    animation: slideOutRight 0.3s ease-in-out both;
+  }
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes overlay-show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
   }
 }
